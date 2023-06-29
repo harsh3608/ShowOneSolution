@@ -1,75 +1,80 @@
 ﻿@model UserRegistrationRequest
 @{
     ViewBag.Title = "Register";
+    ViewBag.CurrentUrl = "~/Account/Register";
 }
 
 <!DOCTYPE html>
 <html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <body style="background-color: #ebe9e4;">
 
     <div class="container border p-3 px-4 mt-4">
 
         <form asp-controller="Account" asp-action="Register" method="post">
 
-        <div class="d-flex flex-row justify-content-center">
-            <h1>Employee Registration</h1>
-        </div>
-        <hr />
+            <div class="d-flex flex-row justify-content-center">
+                <h1>Employee Registration</h1>
+            </div>
+            <hr />
 
-        <div class="row my-2">
-            <div class="col">
-                    <label asp-for="PersonName">Enter Full Name:</label>
-                <input class="form-input" />
+            <div class="row my-2">
+                <div class="col">
+                    <label asp-for="PersonName" class="form-label">Name</label>
+                    <input asp-for="PersonName" class="form-input" />
+                    @*<span asp-validation-for="PersonName" class="text-red"></span>*@
+                </div>
+
+                <div class="col">
+                    <label asp-for="Gender" class="form-label">Enter Gender:</label>
+                    <select asp-for="Gender" class="form-input">
+                        <option default value="">Click to select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="col ">
-                <label>Enter Gender:</label>
-                <select class="form-input">
-                    <option default value="">Click to select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
+            <div class="row my-2">
+                <div class="col">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number:</label>
+                    <input asp-for="PhoneNumber" class="form-input" />
+                </div>
+                <div class="col">
+                    <label asp-for="Email" class="form-label">Email Address:</label>
+                    <input asp-for="Email" class="form-input" />
+                </div>
             </div>
-        </div>
 
-        <div class="row my-2">
-            <div class="col">
-                <label>Phone Number:</label>
-                <input class="form-input" />
+            <div class="row my-2">
+                <div class="col">
+                    <label asp-for="JobRole" class="form-label">Job Role:</label>
+                    <input asp-for="JobRole" class="form-input" />
+                </div>
+                <div class="col"></div>
             </div>
-            <div class="col my-2">
-                <label>Email Address:</label>
-                <input class="form-input" />
-            </div>
-        </div>
 
-        <div class="row my-2">
-            <div class="col">
-                <label>Job Role:</label>
-                <input class="form-input" />
+            <div class="row my-2">
+                <div class="col">
+                    <label asp-for="Password" class="form-label">New Password:</label>
+                    <input asp-for="Password" class="form-input" />
+                </div>
+                <div class="col">
+                    <label asp-for="ConfirmPassword" class="form-label">Confirm Password:</label>
+                    <input asp-for="ConfirmPassword" class="form-input" />
+                </div>
             </div>
-            <div class="col"></div>
-        </div>
 
-        <div class="row my-2">
-            <div class="col">
-                <label>New Password:</label>
-                <input class="form-input" />
-            </div>
-            <div class="col">
-                <label>Confirm Password:</label>
-                <input class="form-input" />
-            </div>
-        </div>
+            <div class="row my-2">
 
-        <div class="row my-2">
-
-            <div class="d-flex justify-content-center my-3">
+                <div class="d-flex justify-content-center my-3">
                     <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
+                </div>
 
-        </div>
+            </div>
 
         </form>
 
@@ -83,5 +88,8 @@
 </body>
 
 </html>
+
+
+
 
 

@@ -17,8 +17,87 @@
     transition: box-shadow 0.2s;
 }
 
-    .form-input:focus {
-        outline: none;
-        border: 1px solid #245eb0;
-        box-shadow: 0px 0px 4px 0px #1383a4;
+.form-input:focus {
+    outline: none;
+    border: 1px solid #245eb0;
+    box-shadow: 0px 0px 4px 0px #1383a4;
+}
+
+
+.form-field > div:first-child {
+    flex: 1;
+    width: auto;
+}
+
+.form-field > div:nth-child(2) {
+    flex: 1;
+    width: auto;
+}
+
+.form-field {
+    flex-direction: column;
+    margin-bottom: 6px;
+}
+
+.form-field > div {
+    padding: 15px !important;
+}
+
+    .form-field > div:first-child {
+        flex: 1 !important;
     }
+
+    .form-field > div:nth-child(2) {
+        flex: 3 !important;
+    }
+
+.form-field {
+    flex-direction: row;
+}
+
+.form-label {
+    display: inline-block;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+    .flex > div {
+        padding: 4px;
+    }
+
+.flex-1 {
+    flex: 1 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
