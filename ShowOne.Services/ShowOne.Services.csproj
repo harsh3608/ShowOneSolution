@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShowOne.Infrastructure\ShowOne.Infrastructure.csproj" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.31.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IServices\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\ShowOne.Infrastructure\ShowOne.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
