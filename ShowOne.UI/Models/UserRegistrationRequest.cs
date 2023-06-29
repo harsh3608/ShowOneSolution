@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopMart.Core.Enums;
+using ShowOne.UI.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShowOne.UI.Models

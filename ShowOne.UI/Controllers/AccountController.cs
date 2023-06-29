@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ShopMart.Core.Enums;
 using ShowOne.Core.IdentityEntities;
+using ShowOne.UI.Enums;
 using ShowOne.UI.Models;
 
 namespace ShowOne.UI.Controllers

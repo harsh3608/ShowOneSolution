@@ -1,5 +1,87 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model UserRegistrationRequest
 @{
+    ViewBag.Title = "Register";
 }
+
+<!DOCTYPE html>
+<html>
+<body style="background-color: #ebe9e4;">
+
+    <div class="container border p-3 px-4 mt-4">
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+
+        <div class="d-flex flex-row justify-content-center">
+            <h1>Employee Registration</h1>
+        </div>
+        <hr />
+
+        <div class="row my-2">
+            <div class="col">
+                    <label asp-for="PersonName">Enter Full Name:</label>
+                <input class="form-input" />
+            </div>
+
+            <div class="col ">
+                <label>Enter Gender:</label>
+                <select class="form-input">
+                    <option default value="">Click to select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col">
+                <label>Phone Number:</label>
+                <input class="form-input" />
+            </div>
+            <div class="col my-2">
+                <label>Email Address:</label>
+                <input class="form-input" />
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col">
+                <label>Job Role:</label>
+                <input class="form-input" />
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col">
+                <label>New Password:</label>
+                <input class="form-input" />
+            </div>
+            <div class="col">
+                <label>Confirm Password:</label>
+                <input class="form-input" />
+            </div>
+        </div>
+
+        <div class="row my-2">
+
+            <div class="d-flex justify-content-center my-3">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+
+        </div>
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
+
+
