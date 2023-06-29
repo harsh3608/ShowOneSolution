@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShowOne.Core.IdentityEntities;
 using ShowOne.Infrastructure.DatabaseContext;
+using ShowOne.Services.IServices;
+using ShowOne.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
