@@ -9,6 +9,7 @@ namespace ShowOne.UI.Models
         [Required(ErrorMessage = "Person Name can't be blank")]
         public string PersonName { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Gender can't be blank")]
         public string? Gender { get; set; }
 
         [Required(ErrorMessage = "Email can't be blank")]
@@ -29,6 +30,7 @@ namespace ShowOne.UI.Models
 
         public UserTypeOptions UserType { get; set; } = UserTypeOptions.Employee;
 
+        [Required(ErrorMessage = "Job Role can't be blank")]
         public string? JobRole { get; set; }
     }
 }

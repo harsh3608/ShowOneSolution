@@ -42,7 +42,7 @@
             <div class="row my-2">
                 <div class="col">
                     <label asp-for="PhoneNumber" class="form-label">Phone Number:</label>
-                    <input asp-for="PhoneNumber" class="form-input" />
+                    <input asp-for="PhoneNumber" class="form-input" maxlength="10" />
                     <span asp-validation-for="PhoneNumber" class="text-red"></span>
                 </div>
                 <div class="col">
@@ -74,7 +74,16 @@
             <div class="row my-2">
 
                 <div class="d-flex justify-content-center my-3">
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-success rounded-pill" type="submit">
+                        <div class="d-flex flex-row">
+                            <span class="p-2">Register</span>
+                            &nbsp;
+                            <span class="material-icons p-2">
+                                app_registration
+                            </span>
+                        </div>
+
+                    </button>
                 </div>
 
             </div>
@@ -82,6 +91,16 @@
         </form>
 
     </div>
+
+
+    @{
+        var token = TempData["AuthenticationToken"]?.ToString();
+    }
+
+    <script>
+        // Store the token in the local storage
+        localStorage.setItem('AuthenticationToken', '@token');
+    </script>
 
 </body>
 

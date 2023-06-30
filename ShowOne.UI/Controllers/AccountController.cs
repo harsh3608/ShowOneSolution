@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShowOne.Core.IdentityEntities;
+using ShowOne.Services.IServices;
 using ShowOne.UI.Enums;
 using ShowOne.UI.Models;
 
@@ -11,12 +13,14 @@ namespace ShowOne.UI.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IJwtService _jwtService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager, IJwtService jwtService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _jwtService = jwtService;
         }
 
         [HttpGet]
@@ -79,6 +83,10 @@ namespace ShowOne.UI.Controllers
                 //Sign in
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
+                var authenticationResponse = _jwtService.CreateJwtToken(user);
+
+                TempData["AuthenticationToken"] = authenticationResponse.Token.ToString();
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -115,13 +123,19 @@ namespace ShowOne.UI.Controllers
 
             if (result.Succeeded)
             {
+
                 //Admin
-                ApplicationUser user = await _userManager.FindByEmailAsync(loginDTO.Email);
+                ApplicationUser? user = await _userManager.FindByEmailAsync(loginDTO.Email);
+
+                var authenticationResponse = _jwtService.CreateJwtToken(user);
+
+                TempData["AuthenticationToken"] = authenticationResponse.Token.ToString();
+
                 if (user != null)
                 {
                     if (await _userManager.IsInRoleAsync(user, UserTypeOptions.Admin.ToString()))
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        return RedirectToAction("Index", "Home");
                     }
                 }
 
@@ -133,9 +147,40 @@ namespace ShowOne.UI.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError("Login", "Inalid email or password");
+            ModelState.AddModelError("Login", "Invalid email or password");
             return View(loginDTO);
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public async Task<IActionResult> IsEmailAlreadyRegistered(string email)
+        {
+            ApplicationUser? user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return Json(true); //valid
+            }
+            else
+            {
+                return Json(false); //invalid
+            }
+        }
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
